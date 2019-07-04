@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silver-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: silver-api-deployment
+  template:
+    metadata:
+      labels:
+        app: silver-api-deployment
+    spec:
+      containers:
+        - name: silver-api-application
+          image: xfinnegan/silver-api:version-1.0.3
+          # imagePullPolicy: Never (Used for local images)
+          ports:
+            - containerPort: 4567

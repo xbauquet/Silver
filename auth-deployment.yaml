@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silver-auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: silver-auth-deployment
+  template:
+    metadata:
+      labels:
+        app: silver-auth-deployment
+    spec:
+      containers:
+        - name: silver-auth-application
+          image: xfinnegan/silver-auth:version-1.0.3
+          ports:
+            - containerPort: 4567
